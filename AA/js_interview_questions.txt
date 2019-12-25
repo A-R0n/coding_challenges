@@ -1,0 +1,45 @@
+// Remove the parent node of an element through an on click event
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="santa">
+            <button id="helper">
+                Remove Santa
+            </button>
+        </div>
+        <script>
+            var santa = document.getElementsByClassName("santa");
+            var helper = document.getElementById("helper");
+            
+            helper.onclick = function(){
+                this.parentNode.remove(santa);
+            };
+        </script>
+    </body>
+</html>
+
+// Write a function that accepts a string of non-separated numbers
+// And outputs the total sum of each single-digit number
+// *Only when* this output is also a single-digit number
+function reduceSumOfNums(x){
+    // An input with a length of 1 is single-digit
+    if(x.length == 1){ 
+        console.log(x);
+    }
+    else {
+        // Split input by character and map result as Number
+        let m = x.split("").map(Number);
+        // Find total summation with reduce
+        let s = m.reduce((a,b)=>{ return a + b});
+        if(s < 10){
+            console.log(s);
+        }
+        else {
+            // Convert summation back into a string
+            // so we can reuse this method recursively.
+            let f = s.toString();
+            this.reduceSumOfNums(f);
+        }
+    }
+}
+
